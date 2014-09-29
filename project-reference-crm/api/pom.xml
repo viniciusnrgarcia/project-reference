@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com</groupId>
+		<artifactId>project-reference-crm</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>project-reference-crm-api</artifactId>
+	<packaging>jar</packaging>
+
+	<name>project-reference-crm-api</name>
+	<description>Modulo API do projeto CRM</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<javaee.api.version>7.0</javaee.api.version>
+
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.plugin>3.1</maven.compiler.plugin>
+
+		<cdi.api.version>1.2</cdi.api.version>
+		<junit.version>4.11</junit.version>
+	</properties>
+
+	<dependencies>
+		<!-- Dependencia modulo crm-common -->
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- Java EE API dependency -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>${cdi.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JUnit Dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

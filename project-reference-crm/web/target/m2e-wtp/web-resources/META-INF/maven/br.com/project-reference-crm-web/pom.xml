@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com</groupId>
+		<artifactId>project-reference-crm</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>project-reference-crm-web</artifactId>
+	<packaging>war</packaging>
+
+	<name>project-reference-crm-web</name>
+	<description>Modulo WEB do projeto de referencia</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.war.plugin>2.4</maven.war.plugin>
+
+		<faces.version>2.2</faces.version>
+		<servlet.api.version>2.5</servlet.api.version>
+		<jsp.api.version>2.2</jsp.api.version>
+		<cdi.api.version>1.2</cdi.api.version>
+
+		<primefaces.version>5.0</primefaces.version>
+		<primefaces.theme.version>1.0.10</primefaces.theme.version>
+
+		<javaee.web.api.version>7.0</javaee.web.api.version>
+
+		<junit.version>4.11</junit.version>
+	</properties>
+
+	<dependencies>
+		<!-- Dependencia modulo crm-common -->
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		
+		<!-- Dependencia modulo crm-api -->
+        <dependency>
+            <groupId>br.com</groupId>
+            <artifactId>project-reference-crm-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+		<!-- Java EE WEB API dependency -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>${javaee.web.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the JSF API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>javax.faces-api</artifactId>
+			<version>${faces.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet</groupId> -->
+		<!-- <artifactId>servlet-api</artifactId> -->
+		<!-- <version>${servlet.api.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.servlet.jsp</groupId> -->
+		<!-- <artifactId>jsp-api</artifactId> -->
+		<!-- <version>${jsp.api.version}</version> -->
+		<!-- </dependency> -->
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>${cdi.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- PrimeFaces Dependencies -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>${primefaces.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${primefaces.theme.version}</version>
+		</dependency>
+
+		<!-- JUnit Dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven.war.plugin}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

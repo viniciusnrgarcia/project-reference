@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>br.com</groupId>
+		<artifactId>project-reference</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<artifactId>project-reference-crm</artifactId>
+	<packaging>pom</packaging>
+	<name>project-reference-crm</name>
+	
+	<description>Projeto de referencia modulo CRM</description>
+
+	<modules>
+		<module>web</module>
+		<module>common</module>
+		<module>ejb</module>
+		<module>api</module>
+	</modules>
+
+</project>

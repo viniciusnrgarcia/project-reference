@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>br.com</groupId>
+		<artifactId>project-reference-crm</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>project-reference-crm-ejb</artifactId>
+	<packaging>ejb</packaging>
+
+	<name>project-reference-crm-ejb</name>
+	<description>Modulo EJB do projeto de referencia Modulo CRM</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<javaee.api.version>7.0</javaee.api.version>
+
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.ejb.plugin.version>2.4</maven.ejb.plugin.version>
+
+		<ejb.version>3.1</ejb.version>
+		<cdi.api.version>1.2</cdi.api.version>
+		<junit.version>4.11</junit.version>
+		<hibernate.jpa.api.version>1.0.0.Final</hibernate.jpa.api.version>
+		<hibernante.validator.version>4.2.0.Final</hibernante.validator.version>
+		<hibernate.version>4.2.15.Final</hibernate.version>
+	</properties>
+
+	<dependencies>
+		<!-- Dependencia modulo crm-common -->
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- Dependencia modulo crm-api -->
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-api</artifactId>
+			<version>1.0.0</version>
+			<optional>false</optional>
+		</dependency>
+
+		<!-- Java EE API dependency -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>${javaee.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the CDI API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>${cdi.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Import the JPA API, we use provided scope as the API is included in 
+			JBoss AS 7 -->
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate.jpa.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JSR-303 (Bean Validation) Implementation -->
+		<!-- Provides portable constraints such as @Email -->
+		<!-- Hibernate Validator is shipped in JBoss AS 7 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernante.validator.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Hibernate Dependencies -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- JUnit Dependency -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>${maven.ejb.plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<ejbVersion>${ejb.version}</ejbVersion>
+					<!-- this is false by default -->
+					<!-- generate client ejb to distribuition -->
+					<!-- <generateClient>true</generateClient> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.9</version>
+				<executions>
+					<execution>
+						<phase>process-sources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<outputDirectory>target/classes</outputDirectory>
+					<includeArtifactIds>
+						project-reference-crm-api, project-reference-crm-common
+					</includeArtifactIds>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

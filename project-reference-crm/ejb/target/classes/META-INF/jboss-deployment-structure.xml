@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+	<deployment>
+		<resources>
+			<resource-root path="project-reference-crm-api-1.0.0.jar" />
+			<resource-root path="project-reference-crm-common-1.0.0.jar" />
+		</resources>
+		<exclusions>
+			<module name="org.hibernate" />
+			<module name="org.hibernate.validator" />
+			<module name="org.apache.commons.logging" />
+			<module name="org.slf4j" />
+			<module name="org.slf4j.ext" />
+			<module name="org.slf4j.jcl-over-slf4j" />
+			<module name="org.slf4j.impl" />
+			<module name="org.apache.log4j" />
+		</exclusions>
+	</deployment>
+
+</jboss-deployment-structure>
