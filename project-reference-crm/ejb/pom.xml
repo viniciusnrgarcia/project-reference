@@ -28,24 +28,23 @@
 		<cdi.api.version>1.2</cdi.api.version>
 		<junit.version>4.11</junit.version>
 		<hibernate.jpa.api.version>1.0.0.Final</hibernate.jpa.api.version>
-		<hibernante.validator.version>4.2.0.Final</hibernante.validator.version>
+		<hibernante.validator.version>4.1.0.Final</hibernante.validator.version>
 		<hibernate.version>4.2.15.Final</hibernate.version>
 	</properties>
 
 	<dependencies>
-		<!-- Dependencia modulo crm-common -->
-		<dependency>
-			<groupId>br.com</groupId>
-			<artifactId>project-reference-crm-common</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-
 		<!-- Dependencia modulo crm-api -->
 		<dependency>
 			<groupId>br.com</groupId>
 			<artifactId>project-reference-crm-api</artifactId>
 			<version>1.0.0</version>
-			<optional>false</optional>
+		</dependency>
+
+		<!-- Dependencia modulo crm-common -->
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-common</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 		<!-- Java EE API dependency -->
@@ -108,6 +107,14 @@
 
 	</dependencies>
 
+	<repositories>
+		<repository>
+			<id>JBoss Repository</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<name>JBoss Repository</name>
+		</repository>
+	</repositories>
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
@@ -139,7 +146,8 @@
 				<configuration>
 					<outputDirectory>target/classes</outputDirectory>
 					<includeArtifactIds>
-						project-reference-crm-api, project-reference-crm-common
+						project-reference-crm-api,
+						project-reference-crm-common
 					</includeArtifactIds>
 				</configuration>
 			</plugin>

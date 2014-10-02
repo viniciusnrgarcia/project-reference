@@ -6,9 +6,9 @@ package br.com.project.reference.crm.web.bean;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
-import javax.inject.Inject;
 
 import br.com.project.reference.crm.common.dto.NovoClienteDto;
 import br.com.project.reference.crm.service.ClienteService;
@@ -34,7 +34,12 @@ public class NovoClienteBean implements Serializable {
      */
     private NovoClienteDto novoClienteDto;
 
-    @Inject
+    /**
+     * Atributo test
+     */
+    private String test;
+
+    @EJB
     private ClienteService service;
 
     /**
@@ -48,6 +53,8 @@ public class NovoClienteBean implements Serializable {
      */
     @PostConstruct
     public void init() {
+        test = "Teste";
+
         novoClienteDto = new NovoClienteDto();
         novoClienteDto.setNome("Vinicius");
         if (service != null) {
@@ -68,6 +75,21 @@ public class NovoClienteBean implements Serializable {
      */
     public void setNovoClienteDto(final NovoClienteDto novoClienteDto) {
         this.novoClienteDto = novoClienteDto;
+    }
+
+    /**
+     * @return the test
+     */
+    public String getTest() {
+        return test;
+    }
+
+    /**
+     * @param test
+     *            the test to set
+     */
+    public void setTest(final String test) {
+        this.test = test;
     }
 
 }

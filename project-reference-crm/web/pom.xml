@@ -43,13 +43,13 @@
 			<artifactId>project-reference-crm-common</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		
+
 		<!-- Dependencia modulo crm-api -->
-        <dependency>
-            <groupId>br.com</groupId>
-            <artifactId>project-reference-crm-api</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+		<dependency>
+			<groupId>br.com</groupId>
+			<artifactId>project-reference-crm-api</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<!-- Java EE WEB API dependency -->
 		<dependency>
@@ -68,17 +68,17 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>javax.servlet</groupId> -->
-		<!-- <artifactId>servlet-api</artifactId> -->
-		<!-- <version>${servlet.api.version}</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet.api.version}</version>
+		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>javax.servlet.jsp</groupId> -->
-		<!-- <artifactId>jsp-api</artifactId> -->
-		<!-- <version>${jsp.api.version}</version> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${jsp.api.version}</version>
+		</dependency>
 
 		<!-- Import the CDI API, we use provided scope as the API is included in 
 			JBoss AS 7 -->

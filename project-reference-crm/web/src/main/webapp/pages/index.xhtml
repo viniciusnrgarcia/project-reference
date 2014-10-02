@@ -12,9 +12,10 @@
 <f:view>
 	<h:form>
 		<h1>
-			<p:outputLabel>Project Reference</p:outputLabel>
+			<p:outputLabel>Project Reference - Module CRM</p:outputLabel>
 		</h1>
 		<p:panel header="Novo Cliente" closable="false">
+		  <p:outputLabel value="#{novoClienteBean.test}" />
 			<p:growl autoUpdate="true" />
 			<p:outputLabel value="#{novoClienteBean.novoClienteDto.nome}" />
 		</p:panel>
